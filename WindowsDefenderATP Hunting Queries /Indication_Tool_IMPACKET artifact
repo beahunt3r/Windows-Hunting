@@ -1,0 +1,7 @@
+// Default IMPACKET artifact in cmdln
+ProcessCreationEvents  
+| where EventTime > ago(10d)
+| where ProcessCommandLine contains "127.0.0.1\\ADMIN$\\" and ProcessCommandLine contains "2>&1"
+| project EventTime , InitiatingProcessFileName , ProcessCommandLine, AccountName , ComputerName 
+| sort by InitiatingProcessFileName desc
+| top 1000 by EventTime

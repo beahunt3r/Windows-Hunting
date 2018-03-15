@@ -1,0 +1,5 @@
+NetworkCommunicationEvents 
+| where EventTime > ago(1d)
+| where InitiatingProcessFileName =~ "powershell.exe"
+| summarize makeset(RemoteUrl), makeset(RemotePort), makeset(InitiatingProcessAccountName)  ,dcount(RemoteUrl) by InitiatingProcessCommandLine
+| sort by dcount_RemoteUrl desc 

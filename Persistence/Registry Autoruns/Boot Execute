@@ -1,0 +1,5 @@
+HKLM\System\CurrentControlSet\Control\ServiceControlManagerExtension
+HKLM\System\CurrentControlSet\Control\Session Manager\BootExecute
+HKLM\System\CurrentControlSet\Control\Session Manager\Execute
+HKLM\System\CurrentControlSet\Control\Session Manager\S0InitialCommand
+HKLM\System\CurrentControlSet\Control\Session Manager\SetupExecute

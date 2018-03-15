@@ -1,0 +1,7 @@
+// Suspicious executions
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName =~ "rundll32.exe"
+| where InitiatingProcessFileName in ("winword.exe" , "excel.exe" , "cscript.exe" , "wscript.exe" , "mshta.exe" )
+| summarize makeset(ComputerName), makeset(AccountName)  by InitiatingProcessFileName, ProcessCommandLine
+| sort by InitiatingProcessFileName asc 

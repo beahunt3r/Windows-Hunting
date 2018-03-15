@@ -1,0 +1,7 @@
+// Control_RunDLL
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName =~ "rundll32.exe"
+| where ProcessCommandLine contains "DllRegisterServer"
+| summarize makeset(ComputerName), makeset(AccountName)  by InitiatingProcessFileName, ProcessCommandLine
+| sort by InitiatingProcessFileName asc 

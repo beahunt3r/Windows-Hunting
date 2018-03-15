@@ -1,0 +1,13 @@
+HKCU\Software\Classes\.cmd
+HKCU\Software\Classes\.exe
+HKCU\SOFTWARE\Classes\Exefile\Shell\Open\Command\(Default)
+HKCU\SOFTWARE\Classes\Htmlfile\Shell\Open\Command\(Default)
+HKCU\Software\Microsoft\Command Processor\Autorun
+HKLM\Software\Classes\.cmd
+HKLM\Software\Classes\.exe
+HKLM\SOFTWARE\Classes\Exefile\Shell\Open\Command\(Default)
+HKLM\SOFTWARE\Classes\Htmlfile\Shell\Open\Command\(Default)
+HKLM\Software\Microsoft\Command Processor\Autorun
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options
+HKLM\Software\Wow6432Node\Microsoft\Command Processor\Autorun
+HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Image File Execution Options

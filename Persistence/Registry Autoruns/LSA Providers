@@ -1,0 +1,5 @@
+HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Authentication Packages
+HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Notification Packages
+HKLM\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig\Security Packages
+HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages
+HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SecurityProviders

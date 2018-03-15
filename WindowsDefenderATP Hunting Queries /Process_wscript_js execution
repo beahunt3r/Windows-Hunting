@@ -1,0 +1,7 @@
+// wscript - js execution
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName =~ "wscript.exe"
+| where ProcessCommandLine contains ".js"
+| summarize makeset(ComputerName), makeset(AccountName)  by InitiatingProcessFileName, ProcessCommandLine
+| sort by InitiatingProcessFileName asc 

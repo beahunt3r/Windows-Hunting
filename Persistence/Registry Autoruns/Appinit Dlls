@@ -1,0 +1,3 @@
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows\Appinit_Dlls
+HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows\Appinit_Dlls
+HKLM\System\CurrentControlSet\Control\Session Manager\AppCertDlls

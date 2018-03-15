@@ -1,0 +1,6 @@
+// Call ClearEventlog
+ProcessCreationEvents  
+| where EventTime > ago(10d)
+| where ProcessCommandLine contains "call ClearEventlog" or InitiatingProcessCommandLine contains "call ClearEventlog" 
+| summarize makeset(ComputerName), makeset(AccountName), dcount(ComputerName)   by InitiatingProcessFileName, ProcessCommandLine
+| sort by dcount_ComputerName desc 

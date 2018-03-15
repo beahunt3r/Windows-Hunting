@@ -1,0 +1,5 @@
+NetworkCommunicationEvents 
+| where EventTime > ago(7d)
+| where InitiatingProcessFileName in ("cscript.exe", "wscript.exe")
+| summarize makeset(InitiatingProcessParentName), makeset(RemoteUrl), makeset(RemotePort), makeset(InitiatingProcessAccountName)  ,dcount(RemoteUrl) by InitiatingProcessCommandLine
+| sort by dcount_RemoteUrl desc 

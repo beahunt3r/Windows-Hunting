@@ -1,0 +1,22 @@
+HKCU\SOFTWARE\Microsoft\Office test\Special\Perf\(Default)
+HKCU\Software\Microsoft\Office\Access\Addins
+HKCU\Software\Microsoft\Office\Excel\Addins
+HKCU\Software\Microsoft\Office\Outlook\Addins
+HKCU\Software\Microsoft\Office\PowerPoint\Addins
+HKCU\Software\Microsoft\Office\Word\Addins
+HKCU\Software\Wow6432Node\Microsoft\Office\Access\Addins
+HKCU\Software\Wow6432Node\Microsoft\Office\Excel\Addins
+HKCU\Software\Wow6432Node\Microsoft\Office\Outlook\Addins
+HKCU\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins
+HKCU\Software\Wow6432Node\Microsoft\Office\Word\Addins
+HKLM\SOFTWARE\Microsoft\Office test\Special\Perf\(Default)
+HKLM\Software\Microsoft\Office\Access\Addins
+HKLM\Software\Microsoft\Office\Excel\Addins
+HKLM\Software\Microsoft\Office\Outlook\Addins
+HKLM\Software\Microsoft\Office\PowerPoint\Addins
+HKLM\Software\Microsoft\Office\Word\Addins
+HKLM\Software\Wow6432Node\Microsoft\Office\Access\Addins
+HKLM\Software\Wow6432Node\Microsoft\Office\Excel\Addins
+HKLM\Software\Wow6432Node\Microsoft\Office\Outlook\Addins
+HKLM\Software\Wow6432Node\Microsoft\Office\PowerPoint\Addins
+HKLM\Software\Wow6432Node\Microsoft\Office\Word\Addins

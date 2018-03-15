@@ -1,0 +1,8 @@
+// Remote Executions
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName =~ "rundll32.exe"
+| where ProcessCommandLine contains "\\roaming\\"
+| where ProcessCommandLine !contains "\\STREAM Interactive (Emirates).appref-ms|"
+| summarize makeset(ComputerName), makeset(AccountName)  by InitiatingProcessFileName, ProcessCommandLine
+| sort by InitiatingProcessFileName asc 

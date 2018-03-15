@@ -1,0 +1,9 @@
+// Bitsadmin Executions
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName contains "bitsadmin.exe"
+| where ProcessCommandLine contains "/TRANSFER" or ProcessCommandLine contains "/CREATE" or ProcessCommandLine contains "/ADDFILE"
+or ProcessCommandLine contains "/SETPROXY" or ProcessCommandLine contains "/SETNOTIFYCMDLINE" or ProcessCommandLine contains "/SETCUSTOMHEADERS"
+or ProcessCommandLine contains "/SETSECURITYFLAGS" or ProcessCommandLine contains "/SETREPLYFILENAME"
+| project EventTime, ComputerName, ProcessCommandLine, InitiatingProcessFileName, AccountName  
+| top 1000 by EventTime

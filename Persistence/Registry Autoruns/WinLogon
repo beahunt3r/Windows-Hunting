@@ -1,0 +1,9 @@
+HKLM\SYSTEM\Setup\CmdLine
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provider Filters
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\PLAP Providers
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman
+HKCU\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop\Scrnsave.exe
+HKCU\Control Panel\Desktop\Scrnsave.exe
+HKLM\System\CurrentControlSet\Control\BootVerificationProgram\ImagePath
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GpExtensions

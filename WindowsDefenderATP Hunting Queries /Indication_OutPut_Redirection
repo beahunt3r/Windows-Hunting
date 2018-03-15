@@ -1,0 +1,6 @@
+// OutPut Redirection
+ProcessCreationEvents  
+| where EventTime > ago(10d)
+| where ProcessCommandLine contains "2>&1"
+| summarize makeset(ComputerName), makeset(AccountName), dcount(ComputerName)   by InitiatingProcessFileName, ProcessCommandLine
+| sort by dcount_ComputerName desc 

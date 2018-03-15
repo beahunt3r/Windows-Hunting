@@ -1,0 +1,5 @@
+// Remote Share Mounting
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where ProcessCommandLine contains "net.exe"
+| where ProcessCommandLine contains "\\c$" or ProcessCommandLine contains "\\admin$" or ProcessCommandLine contains "\\ipc$"

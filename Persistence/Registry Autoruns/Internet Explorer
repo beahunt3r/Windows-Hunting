@@ -1,0 +1,13 @@
+HKCU\Software\Microsoft\Internet Explorer\Explorer Bars
+HKCU\Software\Microsoft\Internet Explorer\Extensions
+HKCU\Software\Microsoft\Internet Explorer\UrlSearchHooks
+HKCU\Software\Wow6432Node\Microsoft\Internet Explorer\Explorer Bars
+HKCU\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
+HKLM\Software\Microsoft\Internet Explorer\Explorer Bars
+HKLM\Software\Microsoft\Internet Explorer\Extensions
+HKLM\Software\Microsoft\Internet Explorer\Toolbar
+HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
+HKLM\Software\Wow6432Node\Microsoft\Internet Explorer\Explorer Bars
+HKLM\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
+HKLM\Software\Wow6432Node\Microsoft\Internet Explorer\Toolbar
+HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
