@@ -1,0 +1,4 @@
+AlertEvents 
+| where EventTime > ago(7d)
+| summarize makeset(FileName), dcount(FileName), makeset(ComputerName), makeset(Category), dcount(ComputerName) by Title 
+| sort by dcount_ComputerName desc

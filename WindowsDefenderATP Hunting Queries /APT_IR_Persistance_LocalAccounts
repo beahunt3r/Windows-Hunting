@@ -1,0 +1,6 @@
+// Local Accounts Activation
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where ProcessCommandLine contains "Administrator /active:yes" or ProcessCommandLine contains "guest /active:yes" 
+//| summarize makeset(ComputerName), makeset(AccountName), makeset(ProcessCommandLine)  by InitiatingProcessFileName
+| project EventTime, ComputerName, ProcessCommandLine, InitiatingProcessFileName, AccountName

@@ -1,0 +1,4 @@
+MiscEvents    
+| where EventTime > ago(17d)
+| where ActionType == "WDAVDetection"
+| summarize  makeset(FileName), makeset(InitiatingProcessParentFileName), makeset(InitiatingProcessFileName), makeset(InitiatingProcessCommandLine), makeset(FolderPath), makeset(InitiatingProcessFolderPath) , makeset(AccountName )  by ComputerName 

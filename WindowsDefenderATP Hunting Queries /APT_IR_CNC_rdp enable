@@ -1,0 +1,7 @@
+// Allow RDP connection
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where ( ProcessCommandLine contains "SC CONFIG" and ProcessCommandLine contains "DISABLED" and ProcessCommandLine contains "wuauserv" )
+or (ProcessCommandLine contains "Terminal Serve" and ProcessCommandLine contains "fDenyTSConnections" and ProcessCommandLine contains "0x0"  )
+//| summarize makeset(ComputerName), makeset(AccountName), makeset(ProcessCommandLine)  by InitiatingProcessFileName
+| project EventTime, ComputerName, ProcessCommandLine, InitiatingProcessFileName, AccountName

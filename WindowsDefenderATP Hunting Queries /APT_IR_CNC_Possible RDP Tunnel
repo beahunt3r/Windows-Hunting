@@ -1,0 +1,4 @@
+// Possible RDP tunnel
+ProcessCreationEvents | where EventTime > ago(10d)
+| where (ProcessCommandLine contains ":3389" or ProcessCommandLine contains ":6511")
+| project EventTime, ComputerName, AccountName, InitiatingProcessFileName, ActionType, FileName, ProcessCommandLine, InitiatingProcessCommandLine

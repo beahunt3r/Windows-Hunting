@@ -1,0 +1,7 @@
+// Service Creation
+// Look for 'InitiatingProcessFileName'
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where FileName contains "SECEDIT" 
+//| where ProcessCommandLine == @"secedit.exe /export /cfg ** .inf"
+| summarize makeset(ComputerName), makeset(AccountName), makeset(ProcessCommandLine)  by InitiatingProcessFileName

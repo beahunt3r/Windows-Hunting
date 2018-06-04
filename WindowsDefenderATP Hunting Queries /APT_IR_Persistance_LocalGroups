@@ -1,0 +1,6 @@
+// User Addition to Local Groups
+ProcessCreationEvents  
+| where EventTime > ago(7d)
+| where ProcessCommandLine contains "localgroup" and ProcessCommandLine contains "/add" and ( ProcessCommandLine contains "Remote Desktop Users" or ProcessCommandLine contains "administrators")
+//| summarize makeset(ComputerName), makeset(AccountName), makeset(ProcessCommandLine)  by InitiatingProcessFileName
+| project EventTime, ComputerName, ProcessCommandLine, InitiatingProcessFileName, AccountName
