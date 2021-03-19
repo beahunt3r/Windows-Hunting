@@ -1,0 +1,25 @@
+// Risk Level: HIGH
+// Justification: - Web shells will be useed by attackers for persistent access to a compromised machine. This rule will trigger when commands are executed remotely.
+//                - Any matching events must be thoroughly investigated, we may endup finding a potential weakness in web application.
+//                - This rule is effective aganist the recent exchange exploits
+// Supporting Investigation Data Sources: WebAccess Logs, Packets, Compile File, WebShell Yara Scan
+// Tactic: Persistence
+// MITRE: https://attack.mitre.org/techniques/T1505/003/
+// Questions: beahunt3r@gmail.com
+
+DeviceProcessEvents 
+| where Timestamp > ago(7d)
+| where (   InitiatingProcessFileName == "w3wp.exe"                    // Windows process which runs Web applications
+            or InitiatingProcessFileName contains "httpd.exe"          // Apache httpd for Microsoft Windows
+            or InitiatingProcessFileName contains "tomcat"             // Apache Tomcat an open-source implementation
+            or InitiatingProcessFileName contains "appache.exe"        // Apache Web server
+            or InitiatingProcessFileName contains "nginx.exe"          // Nginx web server
+            // Run a discovery search on ATP Netowrk Events to find common web services running and add here
+        ) 
+        and FileName in ("cmd.exe", "powershell.exe")
+//////////////////////WHITELIST FILTER CONDITIONS//////////////////////
+//| where ( ProcessCommandLine !contains "<WHITELIST#1>" 
+//            and ProcessCommandLine !contains "<WHITELIST#2>")
+//| project Timestamp, DeviceName, InitiatingProcessFileName, ProcessCommandLine, InitiatingProcessCommandLine, AccountName
+| extend DC_Time = bin(Timestamp, 1d)
+| summarize count(), First_Event = min(Timestamp), Last_Event = max(Timestamp), DC_Time = dcount(DC_Time), dcount(DeviceName) by ProcessCommandLine
