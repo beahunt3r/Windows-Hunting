@@ -1,0 +1,29 @@
+// Name: Persistence_Potential DLL WebShell_Suspicious IIS module detected
+// Risk Level: HIGH
+// Justification: - DLL Web shells are hard to detect as it can run persistantly over the IIS Modules as TransportModule.
+//                - As any other Web shell, DLL Web shells provide a set of functions to execute or a command-line interface on the system that hosts the Web server
+// Supporting Investigation Data Sources: Web Access Logs, Packets, ApplicationHost.config, Yara Scan
+// Tactic: Persistence
+// MITRE: https://attack.mitre.org/techniques/T1505/003/
+// Questions: beahunt3r@gmail.com
+
+union DeviceProcessEvents, DeviceImageLoadEvents 
+| where Timestamp > ago(7d)
+| extend CommandLine=coalesce(ProcessCommandLine,InitiatingProcessCommandLine) 
+| where (FileName =~ "appcmd.exe" or InitiatingProcessFileName =~ "appcmd.exe") 
+            and CommandLine contains "module" and ( CommandLine contains " add" 
+            										                        or CommandLine contains " install")
+| summarize count(), Timestamp = min(Timestamp) by DeviceId, ActionType, CommandLine, InitiatingProcessParentFileName, InitiatingProcessFileName
+//////////////////////WHITELIST FILTER CONDITIONS//////////////////////
+| where InitiatingProcessParentFileName !contains @"\Windows\System32\inetsrv\iissetup.exe" 
+            and InitiatingProcessParentFileName !in ("iissetup.exe")
+            and InitiatingProcessFileName !in ("iissetup.exe")
+            //and CommandLine !contains @"<WHITELIST#1>"
+//////////////////////END/////////////////////////////////////////////
+//| extend commandline=replace(@'%windir%', @'C:\\Windows', CommandLine)			// Map env path to exact location
+| extend module_FolderPath = extract("(image|type)\\:([^(\\/|\\-|$)]+)(\\s+|$)", 2, CommandLine)
+| extend module_FolderPath =replace(@'\"', @'', module_FolderPath)
+| extend module_FileName = extract("(.*)\\\\(.*)", 2, module_FolderPath)
+| join (DeviceFileEvents | summarize count(), File_Create_Timestamp = min(Timestamp) by module_FileName = FileName, SHA256, ActionType, DeviceId) on module_FileName, DeviceId 				// Optional
+| where (Timestamp - File_Create_Timestamp) between (0min .. 1440min)				// Optional
+| invoke FileProfile(SHA256) | where SignatureState != "SignedValid"				// Optional
